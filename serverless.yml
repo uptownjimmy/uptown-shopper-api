@@ -1,0 +1,95 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: uptown-shopper-api
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+custom:
+  secrets: ${file(secrets.json)}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  timeout: 30
+  stage: ${self:custom.secrets.NODE_ENV}
+  region: us-east-1  
+  environment: 
+    NODE_ENV: ${self:custom.secrets.NODE_ENV}
+    DB_NAME: ${self:custom.secrets.DB_NAME}
+    DB_USER: ${self:custom.secrets.DB_USER}
+    DB_PASSWORD: ${self:custom.secrets.DB_PASSWORD}
+    DB_HOST: ${self:custom.secrets.DB_HOST}
+    DB_PORT: ${self:custom.secrets.DB_PORT}
+  vpc:
+    securityGroupIds:
+      - ${self:custom.secrets.SECURITY_GROUP_ID}
+    subnetIds:
+      - ${self:custom.secrets.SUBNET1_ID}
+      - ${self:custom.secrets.SUBNET2_ID}
+      - ${self:custom.secrets.SUBNET3_ID}
+      - ${self:custom.secrets.SUBNET4_ID}
+
+functions:
+  healthCheck:
+    handler: handler.healthCheck
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+  createItem:
+    handler: handler.createItem
+    events:
+      - http:
+          path: items
+          method: post
+          cors: true
+  getOneItem:
+    handler: handler.getOneItem
+    events:
+      - http:
+          path: items/{id}
+          method: get
+          cors: true
+  getAllItems:
+    handler: handler.getAllItems
+    events:
+     - http:
+         path: items
+         method: get
+         cors: true
+  updateItem:
+    handler: handler.updateItem
+    events:
+     - http:
+         path: items/{id}
+         method: put
+         cors: true
+  destroyItem:
+    handler: handler.destroyItem
+    events:
+     - http:
+         path: items/{id}
+         method: delete
+         cors: true
+
+plugins:
+  - serverless-offline
+
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"

@@ -1,0 +1,19 @@
+{
+  "name": "uptown-shopper-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^6.1.4"
+  },
+  "dependencies": {
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6"
+  }
+}
