@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 const ItemModel = require('./models');
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  'uptown_shopper_db',
+  'uptownjimmy',
+  '4e931KXvEHB^',
   {
     dialect: 'mysql',
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT
+    host: 'uptown-cluster.cluster-cl3jqrc7m9jt.us-east-1.rds.amazonaws.com',
+    port: 3306
   }
 )
 const Item = ItemModel(sequelize, Sequelize);
