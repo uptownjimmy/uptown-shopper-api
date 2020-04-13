@@ -30,12 +30,6 @@ provider:
       - ${self:custom.secrets.SUBNET2_ID}
       - ${self:custom.secrets.SUBNET3_ID}
       - ${self:custom.secrets.SUBNET4_ID}
-
-
-
-
-      
-
 functions:
   healthCheck:
     handler: handler.healthCheck
