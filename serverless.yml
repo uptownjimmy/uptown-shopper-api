@@ -2,9 +2,6 @@
 #    docs.serverless.com
 
 service: uptown-shopper-api
-# app and org for use with dashboard.serverless.com
-app: uptown-shopper-api
-org: uptownjimmy
 
 custom:
   secrets: ${file(./secrets.json)}
