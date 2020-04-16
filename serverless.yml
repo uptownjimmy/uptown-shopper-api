@@ -27,49 +27,67 @@ provider:
       - ${self:custom.secrets.SUBNET2_ID}
       - ${self:custom.secrets.SUBNET3_ID}
       - ${self:custom.secrets.SUBNET4_ID}
-functions:
-  healthCheck:
-    handler: handler.healthCheck
-    events:
-      - http:
-          path: /
-          method: get
-          # cors: true
-  createItem:
-    handler: handler.createItem
-    events:
-      - http:
-          path: items
-          method: post
-          # cors: true
-  getOneItem:
-    handler: handler.getOneItem
-    events:
-      - http:
-          path: items/{id}
-          method: get
-          # cors: true
-  getAllItems:
-    handler: handler.getAllItems
-    events:
-     - http:
-         path: items
-         method: get
-        #  cors: true
-  updateItem:
-    handler: handler.updateItem
-    events:
-     - http:
-         path: items/{id}
-         method: put
-        #  cors: true
-  destroyItem:
-    handler: handler.destroyItem
-    events:
-     - http:
-         path: items/{id}
-         method: delete
-        #  cors: true
-
+# functions:
+#   healthCheck:
+#     handler: handler.healthCheck
+#     events:
+#       - http:
+#           path: /
+#           method: get
+#           # cors: true
+#   createItem:
+#     handler: handler.createItem
+#     events:
+#       - http:
+#           path: items
+#           method: post
+#           # cors: true
+#   getOneItem:
+#     handler: handler.getOneItem
+#     events:
+#       - http:
+#           path: items/{id}
+#           method: get
+#           # cors: true
+#   getAllItems:
+#     handler: handler.getAllItems
+#     events:
+#      - http:
+#          path: items
+#          method: get
+#         #  cors: true
+#   updateItem:
+#     handler: handler.updateItem
+#     events:
+#      - http:
+#          path: items/{id}
+#          method: put
+#         #  cors: true
+#   destroyItem:
+#     handler: handler.destroyItem
+#     events:
+#      - http:
+#          path: items/{id}
+#          method: delete
+#         #  cors: true
+    functions:
+      pokemonFunc:
+        handler: handler
+        events:
+          - http:
+              path: items
+              method: get
+          - http:
+              path: items/{id}
+              method: get
+          - http:
+              path: items
+              method: post
+          - http:
+              path: items/{id}
+              method: put
+          - http:
+              path: items/{id}
+              method: delete
 plugins:
   - serverless-offline
