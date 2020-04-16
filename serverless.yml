@@ -34,42 +34,42 @@ functions:
       - http:
           path: /
           method: get
-          cors: true
+          # cors: true
   createItem:
     handler: handler.createItem
     events:
       - http:
           path: items
           method: post
-          cors: true
+          # cors: true
   getOneItem:
     handler: handler.getOneItem
     events:
       - http:
           path: items/{id}
           method: get
-          cors: true
+          # cors: true
   getAllItems:
     handler: handler.getAllItems
     events:
      - http:
          path: items
          method: get
-         cors: true
+        #  cors: true
   updateItem:
     handler: handler.updateItem
     events:
      - http:
          path: items/{id}
          method: put
-         cors: true
+        #  cors: true
   destroyItem:
     handler: handler.destroyItem
     events:
      - http:
          path: items/{id}
          method: delete
-         cors: true
+        #  cors: true
 
 plugins:
   - serverless-offline
